@@ -1,0 +1,59 @@
+@base <localhost://> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix ex: <http://www.example.org#> .
+
+ex:a
+    a prov:Entity ;
+    rdfs:label "a" .
+
+ex:add_three_numbers_64e2a491-b3d7-4f82-9400-e12b98ad7f3a
+    a prov:Activity ;
+    rdfs:label "add_three_numbers" ;
+    prov:used ex:e, ex:f, ex:g .
+
+ex:add_two_numbers_a308428e-4b03-4b1a-ae5c-91703b6af213
+    a prov:Activity ;
+    rdfs:label "add_two_numbers" ;
+    prov:used ex:a, ex:b .
+
+ex:add_two_numbers_b4994607-795f-4705-a3f9-68098fee9ca9
+    a prov:Activity ;
+    rdfs:label "add_two_numbers" ;
+    prov:used ex:c, ex:d .
+
+ex:b
+    a prov:Entity ;
+    rdfs:label "b" .
+
+ex:c
+    a prov:Entity ;
+    rdfs:label "c" ;
+    prov:wasDerivedFrom ex:a, ex:b ;
+    prov:wasGeneratedBy ex:add_two_numbers_a308428e-4b03-4b1a-ae5c-91703b6af213 .
+
+ex:d
+    a prov:Entity ;
+    rdfs:label "d" .
+
+ex:e
+    a prov:Entity ;
+    rdfs:label "e" ;
+    prov:wasDerivedFrom ex:c, ex:d ;
+    prov:wasGeneratedBy ex:add_two_numbers_b4994607-795f-4705-a3f9-68098fee9ca9 .
+
+ex:f
+    a prov:Entity ;
+    rdfs:label "f" .
+
+ex:g
+    a prov:Entity ;
+    rdfs:label "g" .
+
+ex:h
+    a prov:Entity ;
+    rdfs:label "h" ;
+    prov:wasDerivedFrom ex:e, ex:f, ex:g ;
+    prov:wasGeneratedBy ex:add_three_numbers_64e2a491-b3d7-4f82-9400-e12b98ad7f3a .
+

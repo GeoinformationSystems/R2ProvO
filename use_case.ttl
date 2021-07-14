@@ -1,0 +1,95 @@
+@base <localhost://> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix ex: <http://www.example.org#> .
+
+<http://www.example.org#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>
+    a prov:Entity ;
+    rdfs:label "+proj=longlat +datum=WGS84 +no_defs" .
+
+<http://www.example.org#as.data.frame_11176560-57ec-41d1-9130-dc1a53ccc578>
+    a prov:Activity ;
+    rdfs:label "as.data.frame" ;
+    prov:used ex:pollinationRes .
+
+<http://www.example.org#as.data.frame_534443ae-4412-4770-88e2-ff90a4a16c47>
+    a prov:Activity ;
+    rdfs:label "as.data.frame" ;
+    prov:used ex:yieldRapeseed .
+
+ex:cbind_c7bbcad2-58c4-49e3-8b7c-274e63deb790
+    a prov:Activity ;
+    rdfs:label "cbind" ;
+    prov:used ex:pollinationRes_df, ex:yieldRapeseed_df .
+
+ex:outputTable
+    a prov:Entity ;
+    rdfs:label "outputTable" ;
+    prov:wasDerivedFrom ex:pollinationRes_df, ex:yieldRapeseed_df ;
+    prov:wasGeneratedBy ex:cbind_c7bbcad2-58c4-49e3-8b7c-274e63deb790 .
+
+ex:poll_url
+    a prov:Entity ;
+    rdfs:label "poll_url" .
+
+ex:pollination
+    a prov:Entity ;
+    rdfs:label "pollination" ;
+    prov:wasDerivedFrom ex:poll_url ;
+    prov:wasGeneratedBy ex:raster_6ef1bc10-ea61-4887-a288-a73484157d0a .
+
+ex:pollinationProj
+    a prov:Entity ;
+    rdfs:label "pollinationProj" ;
+    prov:wasDerivedFrom <http://www.example.org#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>, ex:pollination ;
+    prov:wasGeneratedBy ex:projectRaster_d63147a3-81ce-4ae3-a630-5f5c831f6e9d .
+
+ex:pollinationRes
+    a prov:Entity ;
+    rdfs:label "pollinationRes" ;
+    prov:wasDerivedFrom ex:pollinationProj, ex:yieldRapeseed ;
+    prov:wasGeneratedBy ex:resample_298b3342-7bba-4a97-8d75-e6dffad3c02c .
+
+ex:pollinationRes_df
+    a prov:Entity ;
+    rdfs:label "pollinationRes_df" ;
+    prov:wasDerivedFrom ex:pollinationRes ;
+    prov:wasGeneratedBy <http://www.example.org#as.data.frame_11176560-57ec-41d1-9130-dc1a53ccc578> .
+
+ex:projectRaster_d63147a3-81ce-4ae3-a630-5f5c831f6e9d
+    a prov:Activity ;
+    rdfs:label "projectRaster" ;
+    prov:used <http://www.example.org#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>, ex:pollination .
+
+ex:rapeseed_url
+    a prov:Entity ;
+    rdfs:label "rapeseed_url" .
+
+ex:raster_6ef1bc10-ea61-4887-a288-a73484157d0a
+    a prov:Activity ;
+    rdfs:label "raster" ;
+    prov:used ex:poll_url .
+
+ex:raster_8a3bad4c-28d4-4d54-8390-a2dde16ed336
+    a prov:Activity ;
+    rdfs:label "raster" ;
+    prov:used ex:rapeseed_url .
+
+ex:resample_298b3342-7bba-4a97-8d75-e6dffad3c02c
+    a prov:Activity ;
+    rdfs:label "resample" ;
+    prov:used ex:pollinationProj, ex:yieldRapeseed .
+
+ex:yieldRapeseed
+    a prov:Entity ;
+    rdfs:label "yieldRapeseed" ;
+    prov:wasDerivedFrom ex:rapeseed_url ;
+    prov:wasGeneratedBy ex:raster_8a3bad4c-28d4-4d54-8390-a2dde16ed336 .
+
+ex:yieldRapeseed_df
+    a prov:Entity ;
+    rdfs:label "yieldRapeseed_df" ;
+    prov:wasDerivedFrom ex:yieldRapeseed ;
+    prov:wasGeneratedBy <http://www.example.org#as.data.frame_534443ae-4412-4770-88e2-ff90a4a16c47> .
+
