@@ -18,12 +18,14 @@ eval(prov(quote(...)))
 ...
 eval(prov(quote(...)))
 
-store_prov()
+store_prov("filename.ttl")
+
 ```
+Visualize at https://geokur-dmp2.geo.tu-dresden.de/provViewer/.
 
 ## Introduction
 
-The PROV Data Model (PROV-DM) is a W3C recommendation for gathering provenance data. The PROV-Ontology (PROV-O) expresses the PROV-DM as RDF.
+The PROV Data Model (PROV-DM) is a W3C recommendation for gathering provenance data. The PROV-Ontology (PROV-O) expresses the PROV-DM as RDF. PROV-O conform provenance graphs can be visualized at https://geokur-dmp2.geo.tu-dresden.de/provViewer/.
 
 Many `R` data processing scrips that convert some input data in some output data, do so, by using
 successive method calls from the wide range of available data processing packages
