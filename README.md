@@ -1,8 +1,8 @@
 # R2PROV-O
 
-__Convert `R` method calls to PROV-O.__
+__Convert R method calls to PROV-O.__
 
-_This package is in development. To use it, the `devtools` package is required. To use the packages methods, you need to start an `R` environment in this readmes directory, load the `devtools` package and run the command `load_all()`. The console output after this command should be `i Loading r2provo`._
+_This package is in development. To use it, the `devtools` package is required. To use the packages methods, you need to start an R environment in this readmes directory, load the `devtools` package and run the command `load_all()`. The console output after this command should be `i Loading r2provo`._
 
 ## TL;DR
 
@@ -27,9 +27,9 @@ Visualize at https://geokur-dmp2.geo.tu-dresden.de/provViewer/.
 
 The PROV Data Model (PROV-DM) is a W3C recommendation for gathering provenance data. The PROV-Ontology (PROV-O) expresses the PROV-DM as RDF. PROV-O conform provenance graphs can be visualized at https://geokur-dmp2.geo.tu-dresden.de/provViewer/.
 
-Many `R` data processing scrips that convert some input data in some output data, do so, by using
+Many R data processing scrips that convert some input data in some output data, do so, by using
 successive method calls from the wide range of available data processing packages
-in `R` (or some self implemented methods).
+in R (or some self implemented methods).
 
 Conditioned by the syntax, each method call follows a common set of patterns. `r2provo` converts this patterns to PROV-O and attaches them to a common provenance graph.
 
@@ -47,11 +47,11 @@ eval(prov(quote(
 )))
 ```
 
-The two methods `eval()` and `quote()` are native to `R`, whilst `prov()` is a method from `r2provo`. 
+The two methods `eval()` and `quote()` are native to R, whilst `prov()` is a method from `r2provo`. 
     
-- `quote()`: Converts `R` code in inside the parenthesis into an `R` language object, without executing it.
-- `prov()`: Converts an `R` language object to PROV-O and adds it to the provenance graph. Returns the `R` language object.
-- `eval()`: Executes an `R` language object or a string.
+- `quote()`: Converts R code in inside the parenthesis into an R language object, without executing it.
+- `prov()`: Converts an R language object to PROV-O and adds it to the provenance graph. Returns the R language object.
+- `eval()`: Executes an R language object or a string.
 
 To connect to methods in the resulting provenance graph, the output of one method needs to be in the input of another method:
 
@@ -67,7 +67,7 @@ eval(prov(quote(
 
 ## Example
 
-To showcase the package we use an example where data from two raster datasets gets combined in a common table. Before this is is possible, one of the datasets needs to be reprojected and resampled to the other datasets coordinate reference system and sample size. These steps require the two `R` packages `raster` and `rgdal`.
+To showcase the package we use an example where data from two raster datasets gets combined in a common table. Before this is is possible, one of the datasets needs to be reprojected and resampled to the other datasets coordinate reference system and sample size. These steps require the two R packages `raster` and `rgdal`.
 
 ```r
 #---- Load required packages
