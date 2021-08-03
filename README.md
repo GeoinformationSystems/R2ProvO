@@ -150,3 +150,10 @@ write.csv(finalTable, "finalTable.csv")
 ```
 
 <img src="example_scripts/use_case_short_prov.jpg">
+
+## TO DO
+
+- __identify and add more patterns__
+- evaluate the R language objects objects and attach according metadata to  provenance graph
+- simplify triple structure (maybe `prov()` could indicate that the next method call should be added to the graph)
+- add possibility to enter custom namespace on `prov_init()`
