@@ -149,4 +149,4 @@ store_prov("use_case_short_prov.ttl")
 write.csv(finalTable, "finalTable.csv")
 ```
 
-<img src="example_scripts/use_case_short_prov_with_clean_table.jpg">
+<img src="example_scripts/use_case_short_prov.jpg">
