@@ -1,0 +1,62 @@
+@base <localhost://> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix ex: <http://www.example.org#> .
+
+<http://www.example.org#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>
+    a prov:Entity ;
+    rdfs:label "+proj=longlat +datum=WGS84 +no_defs" .
+
+ex:cbind_87dcf160-f45d-11eb-a3ab-ab23fb22cf4d
+    a prov:Activity ;
+    rdfs:label "cbind" ;
+    prov:used ex:pollinationRes, ex:yieldRapeseed .
+
+ex:cleanTable_8b7240be-f45d-11eb-a3ab-ab23fb22cf4d
+    a prov:Activity ;
+    rdfs:label "cleanTable" ;
+    prov:used ex:outputTable .
+
+ex:finalTable
+    a prov:Entity ;
+    rdfs:label "finalTable" ;
+    prov:wasDerivedFrom ex:outputTable ;
+    prov:wasGeneratedBy ex:cleanTable_8b7240be-f45d-11eb-a3ab-ab23fb22cf4d .
+
+ex:outputTable
+    a prov:Entity ;
+    rdfs:label "outputTable" ;
+    prov:wasDerivedFrom ex:pollinationRes, ex:yieldRapeseed ;
+    prov:wasGeneratedBy ex:cbind_87dcf160-f45d-11eb-a3ab-ab23fb22cf4d .
+
+ex:pollination
+    a prov:Entity ;
+    rdfs:label "pollination" .
+
+ex:pollinationProj
+    a prov:Entity ;
+    rdfs:label "pollinationProj" ;
+    prov:wasDerivedFrom <http://www.example.org#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>, ex:pollination ;
+    prov:wasGeneratedBy ex:projectRaster_1bfb1c56-f45d-11eb-a3ab-ab23fb22cf4d .
+
+ex:pollinationRes
+    a prov:Entity ;
+    rdfs:label "pollinationRes" ;
+    prov:wasDerivedFrom ex:pollinationProj, ex:yieldRapeseed ;
+    prov:wasGeneratedBy ex:resample_61a851ba-f45d-11eb-a3ab-ab23fb22cf4d .
+
+ex:projectRaster_1bfb1c56-f45d-11eb-a3ab-ab23fb22cf4d
+    a prov:Activity ;
+    rdfs:label "projectRaster" ;
+    prov:used <http://www.example.org#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>, ex:pollination .
+
+ex:resample_61a851ba-f45d-11eb-a3ab-ab23fb22cf4d
+    a prov:Activity ;
+    rdfs:label "resample" ;
+    prov:used ex:pollinationProj, ex:yieldRapeseed .
+
+ex:yieldRapeseed
+    a prov:Entity ;
+    rdfs:label "yieldRapeseed" .
+

@@ -1,18 +1,15 @@
-## Extract and analyze data for GeoKur use case 1 (test)
-# Author: Lukas Egli
-# Date: 19/05/2021
 
 #---- Load required packages
-if (!require("ckanr")) install.packages("ckanr")
-library("ckanr")
 if (!require("raster")) install.packages("raster")
 library("raster")
 if (!require("rgdal")) install.packages("rgdal")
 library("rgdal")
 # if (!require("r2prov")) install.packages("r2prov");library ("r2prov")
 
-init_prov_store()
-# you can also access the resources url directly by using an api request
+# --------------------------------------------------------
+
+init_prov()
+# get data
 poll_url <- "https://geokur-dmp.geo.tu-dresden.de/dataset/1383628b-633b-401d-9277-977b90fc83a0/resource/eeecaa00-4da4-4022-9ae6-8a7849e9d5c1/download/3b_visitprob.tif"
 eval(prov(quote(
     pollination <- raster(poll_url)
@@ -52,7 +49,10 @@ eval(prov(quote(
 )))
 names(outputTable) <- c("yieldRapeseed", "pollination")
 # remove 0 yields and NAs
+
+# if this last step should be stored in the graph it has to be rewritten as a method
 outputTableFinal <- outputTable[which(outputTable$yieldRapeseed > 0 & !is.na(outputTable$pollination)), ]
+
 head(outputTableFinal) ## this would be the DATA OUTPUT!
 
 store_prov("use_case.ttl")

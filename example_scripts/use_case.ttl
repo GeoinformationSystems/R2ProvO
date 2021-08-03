@@ -8,17 +8,22 @@
     a prov:Entity ;
     rdfs:label "+proj=longlat +datum=WGS84 +no_defs" .
 
-<http://www.example.org#as.data.frame_11176560-57ec-41d1-9130-dc1a53ccc578>
+<http://www.example.org#%5B_701ad148-f45b-11eb-8421-e5f099befe95>
     a prov:Activity ;
-    rdfs:label "as.data.frame" ;
-    prov:used ex:pollinationRes .
+    rdfs:label "[" ;
+    prov:used <http://www.example.org#>, ex:outputTable, <http://www.example.org#which%2C%20outputTable%24yieldRapeseed%20%3E%200%20%26%20%21is.na%28outputTable%24pollination%29> .
 
-<http://www.example.org#as.data.frame_534443ae-4412-4770-88e2-ff90a4a16c47>
+<http://www.example.org#as.data.frame_6b53b9ae-f45b-11eb-8421-e5f099befe95>
     a prov:Activity ;
     rdfs:label "as.data.frame" ;
     prov:used ex:yieldRapeseed .
 
-ex:cbind_c7bbcad2-58c4-49e3-8b7c-274e63deb790
+<http://www.example.org#as.data.frame_6deb14c8-f45b-11eb-8421-e5f099befe95>
+    a prov:Activity ;
+    rdfs:label "as.data.frame" ;
+    prov:used ex:pollinationRes .
+
+ex:cbind_6ea6ffe4-f45b-11eb-8421-e5f099befe95
     a prov:Activity ;
     rdfs:label "cbind" ;
     prov:used ex:pollinationRes_df, ex:yieldRapeseed_df .
@@ -27,7 +32,7 @@ ex:outputTable
     a prov:Entity ;
     rdfs:label "outputTable" ;
     prov:wasDerivedFrom ex:pollinationRes_df, ex:yieldRapeseed_df ;
-    prov:wasGeneratedBy ex:cbind_c7bbcad2-58c4-49e3-8b7c-274e63deb790 .
+    prov:wasGeneratedBy ex:cbind_6ea6ffe4-f45b-11eb-8421-e5f099befe95 .
 
 ex:poll_url
     a prov:Entity ;
@@ -37,27 +42,27 @@ ex:pollination
     a prov:Entity ;
     rdfs:label "pollination" ;
     prov:wasDerivedFrom ex:poll_url ;
-    prov:wasGeneratedBy ex:raster_6ef1bc10-ea61-4887-a288-a73484157d0a .
+    prov:wasGeneratedBy ex:raster_092a56de-f45b-11eb-8421-e5f099befe95 .
 
 ex:pollinationProj
     a prov:Entity ;
     rdfs:label "pollinationProj" ;
     prov:wasDerivedFrom <http://www.example.org#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>, ex:pollination ;
-    prov:wasGeneratedBy ex:projectRaster_d63147a3-81ce-4ae3-a630-5f5c831f6e9d .
+    prov:wasGeneratedBy ex:projectRaster_11b20f2c-f45b-11eb-8421-e5f099befe95 .
 
 ex:pollinationRes
     a prov:Entity ;
     rdfs:label "pollinationRes" ;
     prov:wasDerivedFrom ex:pollinationProj, ex:yieldRapeseed ;
-    prov:wasGeneratedBy ex:resample_298b3342-7bba-4a97-8d75-e6dffad3c02c .
+    prov:wasGeneratedBy ex:resample_50b40ae0-f45b-11eb-8421-e5f099befe95 .
 
 ex:pollinationRes_df
     a prov:Entity ;
     rdfs:label "pollinationRes_df" ;
     prov:wasDerivedFrom ex:pollinationRes ;
-    prov:wasGeneratedBy <http://www.example.org#as.data.frame_11176560-57ec-41d1-9130-dc1a53ccc578> .
+    prov:wasGeneratedBy <http://www.example.org#as.data.frame_6deb14c8-f45b-11eb-8421-e5f099befe95> .
 
-ex:projectRaster_d63147a3-81ce-4ae3-a630-5f5c831f6e9d
+ex:projectRaster_11b20f2c-f45b-11eb-8421-e5f099befe95
     a prov:Activity ;
     rdfs:label "projectRaster" ;
     prov:used <http://www.example.org#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>, ex:pollination .
@@ -66,17 +71,17 @@ ex:rapeseed_url
     a prov:Entity ;
     rdfs:label "rapeseed_url" .
 
-ex:raster_6ef1bc10-ea61-4887-a288-a73484157d0a
+ex:raster_092a56de-f45b-11eb-8421-e5f099befe95
     a prov:Activity ;
     rdfs:label "raster" ;
     prov:used ex:poll_url .
 
-ex:raster_8a3bad4c-28d4-4d54-8390-a2dde16ed336
+ex:raster_0e9fcf0e-f45b-11eb-8421-e5f099befe95
     a prov:Activity ;
     rdfs:label "raster" ;
     prov:used ex:rapeseed_url .
 
-ex:resample_298b3342-7bba-4a97-8d75-e6dffad3c02c
+ex:resample_50b40ae0-f45b-11eb-8421-e5f099befe95
     a prov:Activity ;
     rdfs:label "resample" ;
     prov:used ex:pollinationProj, ex:yieldRapeseed .
@@ -85,11 +90,11 @@ ex:yieldRapeseed
     a prov:Entity ;
     rdfs:label "yieldRapeseed" ;
     prov:wasDerivedFrom ex:rapeseed_url ;
-    prov:wasGeneratedBy ex:raster_8a3bad4c-28d4-4d54-8390-a2dde16ed336 .
+    prov:wasGeneratedBy ex:raster_0e9fcf0e-f45b-11eb-8421-e5f099befe95 .
 
 ex:yieldRapeseed_df
     a prov:Entity ;
     rdfs:label "yieldRapeseed_df" ;
     prov:wasDerivedFrom ex:yieldRapeseed ;
-    prov:wasGeneratedBy <http://www.example.org#as.data.frame_534443ae-4412-4770-88e2-ff90a4a16c47> .
+    prov:wasGeneratedBy <http://www.example.org#as.data.frame_6b53b9ae-f45b-11eb-8421-e5f099befe95> .
 

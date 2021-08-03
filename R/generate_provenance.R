@@ -3,7 +3,7 @@
 pkg.env <- new.env()
 
 
-init_prov_store <- function(){
+init_prov <- function() {
     pkg.env$rdf <- rdflib::rdf()
 
     pkg.env$namespaces <- c(
@@ -14,7 +14,7 @@ init_prov_store <- function(){
     )
 }
 
-store_prov <- function(name){
+store_prov <- function(name) {
     rdflib::rdf_serialize(pkg.env$rdf, name, namespace = pkg.env$namespaces, format = "turtle")
 }
 
