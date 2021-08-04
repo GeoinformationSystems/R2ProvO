@@ -1,0 +1,67 @@
+@base <localhost://> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix rscript: <http://www.r.rscript#> .
+
+<http://www.r.rscript#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>
+    a prov:Entity ;
+    rdfs:label "+proj=longlat +datum=WGS84 +no_defs" .
+
+rscript:cbind_2ab61564-f518-11eb-89f7-938b0f01ef8f
+    a prov:Activity ;
+    rdfs:label "cbind" ;
+    prov:used rscript:pollinationRes, rscript:yieldRapeseed .
+
+rscript:cleanTable_3f145534-f518-11eb-89f7-938b0f01ef8f
+    a prov:Activity ;
+    rdfs:label "cleanTable" ;
+    prov:used rscript:outputTable .
+
+rscript:finalTable
+    a prov:Entity ;
+    rdfs:label "finalTable" ;
+    prov:wasDerivedFrom rscript:outputTable ;
+    prov:wasGeneratedBy rscript:cleanTable_3f145534-f518-11eb-89f7-938b0f01ef8f .
+
+rscript:outputTable
+    a prov:Entity ;
+    rdfs:label "outputTable" ;
+    prov:wasDerivedFrom rscript:pollinationRes, rscript:yieldRapeseed ;
+    prov:wasGeneratedBy rscript:cbind_2ab61564-f518-11eb-89f7-938b0f01ef8f .
+
+rscript:pollination
+    a prov:Entity ;
+    rdfs:label "pollination" .
+
+rscript:pollinationProj
+    a prov:Entity ;
+    rdfs:label "pollinationProj" ;
+    prov:wasDerivedFrom <http://www.r.rscript#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>, rscript:pollination ;
+    prov:wasGeneratedBy rscript:projectRaster_1134bcf8-f518-11eb-89f7-938b0f01ef8f .
+
+rscript:pollinationRes
+    a prov:Entity ;
+    rdfs:label "pollinationRes" ;
+    prov:wasDerivedFrom rscript:pollinationProj, rscript:yieldRapeseed ;
+    prov:wasGeneratedBy rscript:resample_13041aba-f518-11eb-89f7-938b0f01ef8f, rscript:resample_29bf02d8-f518-11eb-89f7-938b0f01ef8f .
+
+rscript:projectRaster_1134bcf8-f518-11eb-89f7-938b0f01ef8f
+    a prov:Activity ;
+    rdfs:label "projectRaster" ;
+    prov:used <http://www.r.rscript#%2Bproj%3Dlonglat%20%2Bdatum%3DWGS84%20%2Bno_defs>, rscript:pollination .
+
+rscript:resample_13041aba-f518-11eb-89f7-938b0f01ef8f
+    a prov:Activity ;
+    rdfs:label "resample" ;
+    prov:used rscript:pollinationProj, rscript:yieldRapeseed .
+
+rscript:resample_29bf02d8-f518-11eb-89f7-938b0f01ef8f
+    a prov:Activity ;
+    rdfs:label "resample" ;
+    prov:used rscript:pollinationProj, rscript:yieldRapeseed .
+
+rscript:yieldRapeseed
+    a prov:Entity ;
+    rdfs:label "yieldRapeseed" .
+
