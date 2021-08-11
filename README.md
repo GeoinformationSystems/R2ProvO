@@ -53,7 +53,7 @@ The two methods `eval()` and `quote()` are native to R, whilst `prov()` is a met
 - `prov()`: Converts an R language object to PROV-O and adds it to the provenance graph. Returns the R language object.
 - `eval()`: Executes an R language object or a string.
 
-To connect two methods in the resulting provenance graph, the output of one method must be in the input of the other method:
+To connect two methods in the resulting provenance graph, the output of one method has to be in the input of the other method:
 
 ```
 eval(prov(quote(
@@ -92,7 +92,7 @@ rapeseed_url <- "https://geokur-dmp.geo.tu-dresden.de/dataset/6f99ba93-ad5a-4841
 yieldRapeseed <- raster(rapeseed_url)
 ```
 
-In the next step we reproject the pollination raster and add this processing step to the provenance graph.
+Hereinafter, we reproject the pollination raster and add this processing step to the provenance graph.
 
 ```r
 # project raster
@@ -123,7 +123,7 @@ eval(prov(quote(
 )))
 ```
 
-A last step might comprise removing of zero and n.a. values from the output table. In R, this could be done with the following command:
+A last step might comprise the removing of zero and n.a. values from the output table. In R, this could be done with the following command:
 
 ```r
 finalTable <- outputTable[which(outputTable$yieldRapeseed > 0 & !is.na(outputTable$pollination)), ]
