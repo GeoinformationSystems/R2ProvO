@@ -26,7 +26,6 @@ eval(prov(quote(
     pollinationProj <- projectRaster(pollination, crs = "+proj=longlat +datum=WGS84 +no_defs")
 )))
 
-
 # resample to 5 arcmin
 eval(prov(quote(
     pollinationRes <- resample(pollinationProj, yieldRapeseed)
@@ -45,7 +44,7 @@ eval(prov(quote(
 names(outputTable) <- c("yieldRapeseed", "pollination")
 
 # if this last step should be stored in the graph it has to be rewritten as a method
-# (this of course is not a very senseful method)
+# (this of course is not a very meaningful method)
 # remove 0 yields and NAs
 finalTable <- outputTable[which(outputTable$yieldRapeseed > 0 & !is.na(outputTable$pollination)), ]
 
